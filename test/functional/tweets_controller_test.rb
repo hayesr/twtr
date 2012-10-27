@@ -29,11 +29,15 @@ class TweetsControllerTest < ActionController::TestCase
   end
   
   test "API calls are cached" do
+    ActionController::Base.perform_caching = true
+    
     username = 'darthvader'
     Rails.cache.delete(username)
     assert_nil Rails.cache.fetch(username)
     get :index, :username => username
     assert_not_nil Rails.cache.fetch(username)
+    
+    ActionController::Base.perform_caching = false
   end
 
 end
