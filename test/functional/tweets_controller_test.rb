@@ -27,5 +27,13 @@ class TweetsControllerTest < ActionController::TestCase
     assert_template 'index'
     assert_select "h1", /ehayes/
   end
+  
+  test "API calls are cached" do
+    username = 'darthvader'
+    Rails.cache.delete(username)
+    assert_nil Rails.cache.fetch(username)
+    get :index, :username => username
+    assert_not_nil Rails.cache.fetch(username)
+  end
 
 end
