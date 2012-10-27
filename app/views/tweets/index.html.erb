@@ -1,11 +1,17 @@
-<h1>Tweets#index</h1>
-<%= @username %>
+<h1>Tweets for @<%= @username %></h1>
 
-<ul>
+
+<%= form_tag '/' do %>
+	<%= label_tag 'username' %>
+	<%= text_field_tag 'username' %>
+	<%= submit_tag 'view tweets' %>
+<% end %>
+
+<ol>
 <% @tweets.each do |tweet| %>
 	<li>
 		<b><%= tweet[:created_at] %></b>
 		<%= simple_format tweet[:text] %>
 	</li>
 <% end %>
-</ul>
+</ol>

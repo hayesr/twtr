@@ -1,6 +1,6 @@
 Twtr::Application.routes.draw do
   
-  resources :tweets, only: [:index]
+  # resources :tweets, only: [:index]
   get '/:username', controller: 'tweets', action: 'index'
   
   root to: 'tweets#index'
