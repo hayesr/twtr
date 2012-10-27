@@ -1,0 +1,15 @@
+<h1>Twitter Queries</h1>
+
+<% if @queries.any? %>
+
+<ul>
+	<% @queries.each do |q| %>
+	<li><%= link_to q.username, q %></li>
+	<% end %>
+</ul>
+
+<% else %>
+
+<p>No Twitter queries have been made yet, <%= link_to "make one", root_path %>.</p>
+
+<% end %>

@@ -16,6 +16,9 @@ class TweetsController < ApplicationController
   def cache_username(username)
     Rails.cache.fetch(username, expires_in: 5.minutes ) do
       tweets = Twitter.user_timeline(username, count: 25)
+      Query.create(username: username, response: tweets)
+      
+      tweets
     end
   end
 end
