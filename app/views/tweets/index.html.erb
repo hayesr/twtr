@@ -1,0 +1,11 @@
+<h1>Tweets#index</h1>
+<%= @username %>
+
+<ul>
+<% @tweets.each do |tweet| %>
+	<li>
+		<b><%= tweet[:created_at] %></b>
+		<%= simple_format tweet[:text] %>
+	</li>
+<% end %>
+</ul>
