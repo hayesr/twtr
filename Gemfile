@@ -13,6 +13,15 @@ group :development do
   gem 'pry-rails'
 end
 
+group :test do
+  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'guard'
+  gem 'guard-test'
+  gem 'guard-livereload'
+  gem 'terminal-notifier-guard'
+  gem 'ruby-prof'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
