@@ -18,14 +18,15 @@ class TweetsControllerTest < ActionController::TestCase
   
   test "slash username should load username's tweets" do
     get :index, :username => 'dhh'
-    assert_select "h1", /dhh/
-    assert_select "li", 25
+    assert_select "[value=?]", /dhh/
+    assert_select "ol>li", 25
   end
   
   test "username form should load username's tweets" do
-    post :index, :username => 'ehayes'
+    post :index, :username => 'darthvader'
     assert_template 'index'
-    assert_select "h1", /ehayes/
+    assert_select "[value=?]", /darthvader/
+    assert_select "ol>li", 25
   end
   
   test "API calls are cached" do
