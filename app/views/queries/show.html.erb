@@ -1,15 +1,15 @@
-<p><%= link_to "back", queries_path %></p>
+<p><%= link_to "← back", queries_path %></p>
+<section>
+	<h1>Query for <%= @query.username %>'s Timeline</h1>
+	<h3>Made on <%= @query.created_at.strftime('%A, %b %d') %> at <%= @query.created_at.strftime('%I:%M%p') %> returned: </h3>
 
-<h1>Query for <%= @query.username %>'s Timeline</h1>
-<p>Made on <%= @query.created_at.strftime('%A, %b %d') %> at <%= @query.created_at.strftime('%I:%M%p') %> </p>
-
-<p>What was returned: </p>
-
-<ol>
-<% @query.tweets.each do |t| %>	
-	<li>
-		<%= raw t.text %><br>
-		<small><%= t.created_at %></small>
-	</li>
-<% end %>
-</ol>
+	
+	<ol>
+	<% @query.tweets.each do |t| %>	
+		<li>
+			<%= raw t.text %><br>
+			<small><%= t.created_at %></small>
+		</li>
+	<% end %>
+	</ol>
+</section>

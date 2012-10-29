@@ -1,0 +1,84 @@
+@import 'compass';
+@import 'normalize';
+
+
+$white:     #f7f7f7 !default;
+
+$greyge:    #dedbd6;
+$grey-blue: #8e9292;
+$blue-grey: #545e68;
+$blue:      #424d57;
+
+* { 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  }
+
+body{
+  background: $white; 
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; 
+  font-size: 16px; 
+  line-height: 1.6; 
+  color: #444; 
+  position: relative; 
+  -webkit-font-smoothing: antialiased;
+}
+
+h6{ font-size: 13px; }
+h5{ font-size: 16px; }
+h4{ font-size: 21px; }
+h3{ font-size: 26px; }
+h2{ font-size: 34px; }
+h1{ font-size: 42px; }
+
+a{
+  color: #436B97;
+  text-decoration: none;
+  &:visited{ color: #436B97; }
+  &:hover{ color: $blue; }
+  
+}
+
+.container{
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+section{
+  float: left;
+  width: 70%;
+  padding: 0 2em;
+  ol{
+    padding: 0;
+    list-style:none;
+  }
+  li{
+    padding:  0 0 1em 0;
+    border-bottom: 1px solid $greyge;
+    margin: 0 0 1em 0;
+    small{
+      display:block;
+      color: $grey-blue;
+    }
+  }
+}
+
+aside{
+  float: left;
+  width: 30%;
+  padding: 0 2em;
+  ul{
+    margin: 1em 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section,aside{ 
+    float:none; 
+    width: 100%;
+    }
+}

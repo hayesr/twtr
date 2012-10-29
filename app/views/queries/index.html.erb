@@ -1,15 +1,22 @@
-<h1>Twitter Queries</h1>
 
-<% if @queries.any? %>
+<section>
+	<p><%= link_to "← back home", root_path %></p>
+	<h1>Twitter Queries</h1>
 
-<ul>
-	<% @queries.each do |q| %>
-	<li><%= link_to q.username, q %></li>
+	<% if @queries.any? %>
+
+	<ul>
+		<% @queries.each do |q| %>
+		<li>
+			<%= link_to q.username, q %>
+			<small><%= q.created_at %></small>
+		</li>
+		<% end %>
+	</ul>
+
+	<% else %>
+
+	<p>No Twitter queries have been made yet, <%= link_to "make one", root_path %>.</p>
+
 	<% end %>
-</ul>
-
-<% else %>
-
-<p>No Twitter queries have been made yet, <%= link_to "make one", root_path %>.</p>
-
-<% end %>
+</section>

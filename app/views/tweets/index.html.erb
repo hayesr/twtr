@@ -1,17 +1,41 @@
-<h1>Tweets for @<%= @username %></h1>
 
 
-<%= form_tag '/' do %>
-	<%= label_tag 'username' %>
-	<%= text_field_tag 'username' %>
-	<%= submit_tag 'view tweets' %>
-<% end %>
+<section>		
+			
+			<%= form_tag '/' do %>
+				<h3>Tweets for @<%= text_field_tag 'username', @username %> <%= submit_tag 'load' %></h3>
+				
+				
+			<% end %>
+			
+			<hr>
 
-<ol>
-<% @tweets.each do |tweet| %>
-	<li>
-		<b><%= tweet[:created_at] %></b>
-		<%= simple_format tweet[:text] %>
-	</li>
-<% end %>
-</ol>
+			<ol>
+			<% @tweets.each do |tweet| %>
+				<li>
+					<div class="body">
+						<%= simple_format tweet[:full_text] %>
+					</div>
+					<small><%= tweet[:created_at] %></small>
+					
+				</li>
+			<% end %>
+			</ol>
+		
+</section>
+	
+<aside>
+	<h4>Your Recent Username Queries</h4>
+	<ul>
+		<% @queries.each do |q| %>
+		<li><%= link_to q, "/#{q}" %></li>
+		<% end %>
+	</ul>
+	
+	<h4>Complete Log</h4>
+	<p><%= link_to "Query Log", queries_path %></p>
+</aside>	
+
+
+
+
