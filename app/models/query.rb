@@ -10,7 +10,9 @@ class Query
   def response=(response)
     if response.kind_of? Array
       response.each do |t|
-        tweets.new(t.to_hash)
+        tweet = tweets.new(t.to_hash)
+        tweet.text = t.full_text
+        
       end
     end
   end
