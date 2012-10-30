@@ -2,15 +2,24 @@ class TweetsController < ApplicationController
   
   before_filter :prime_queries_in_session
   
+  DEFAULT_USERNAME = 'dhh'
+  
   def index
     
     if params[:username]
       @username = params[:username]
     else
-      @username = 'dhh'
+      @username = DEFAULT_USERNAME
     end
     
-    @tweets = cache_username(@username)
+    begin
+      @tweets = cache_username(@username)
+    rescue Twitter::Error::NotFound
+      @tweets = cache_username(DEFAULT_USERNAME)
+      @username = DEFAULT_USERNAME
+      flash[:alert] = "Invalid username."
+    end
+    
     @queries = session[:queries].uniq.reverse
   end
   

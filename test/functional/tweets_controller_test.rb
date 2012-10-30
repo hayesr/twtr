@@ -40,5 +40,13 @@ class TweetsControllerTest < ActionController::TestCase
     
     ActionController::Base.perform_caching = false
   end
+  
+  test "Invalid username is handled" do
+    username = 'lsdfjguanr7dklsehasl2'
+    get :index, :username => username
+    
+    assert_select "div.alert", :text => "Invalid username."
+    assert_equal "Invalid username.", flash[:alert]
+  end
 
 end

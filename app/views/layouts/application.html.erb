@@ -8,9 +8,17 @@
 </head>
 <body>
 
-<div class="container">
-	<%= yield %>
-</div>
+	<div class="container">
+		<% if flash.any? %>
+			<div class="messages">
+				<% flash.each do |k,v| %>
+				<div class="<%= k %>"><%= v %></div>
+				<% end %>
+			</div>
+		<% end %>
+		
+		<%= yield %>
+	</div>
 
 
 
